@@ -13,19 +13,18 @@ export default class Character {
     }
     this.health = 100;
     this.level = 1;
-    this.attack = 25;
-    this.defence = 25;
+    this.attack = undefined;
+    this.defence = undefined;
   }
 
   levelUp() {
-    if (this.health > 0) {
-      this.level += 1;
-      this.attack *= 1.2;
-      this.defence *= 1.2;
-      this.health = 100;
-    } else {
+    if (this.health < 1) {
       throw new Error('Нельзя повысить уровень, умер');
     }
+    this.level += 1;
+    this.attack *= 1.2;
+    this.defence *= 1.2;
+    this.health = 100;
   }
 
   damage(points) {
